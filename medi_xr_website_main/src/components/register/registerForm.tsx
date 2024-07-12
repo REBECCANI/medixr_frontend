@@ -18,6 +18,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [institution, setInstitution] = useState("")
+    const [category, setCategory] = useState("")
 
     const baseUrl =  'http://localhost:5000'; 
 
@@ -55,6 +56,7 @@ const RegisterForm = () => {
                 email,
                 password,
                 institution,
+                category,
                 verificationToken: token,
               }),
             });
@@ -189,6 +191,26 @@ const RegisterForm = () => {
                               name="institution"
                               required
                             />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="category" className="text-sm font-semibold text-gray-600 mb-1">
+                              Category
+                            </label>
+                            <select
+                              id="category"
+                              className="input_2"
+                              onChange={(e) => setCategory(e.target.value)}
+                              onClick={resetError}
+                              value={category}
+                              name="category"
+                              required
+                            >
+                              <option value="">Select category</option>
+                              <option value="student">Student</option>
+                              <option value="doctor">Doctor</option>
+                              <option value="sponsor">Sponsor</option>
+                              <option value="health care center">Health Care Center</option>
+                            </select>
                           </div>
                           <button
                             type="submit"

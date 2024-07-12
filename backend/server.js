@@ -25,16 +25,16 @@ app.use((req, res, next) => {
 });
 
 app.post("/register", (req, res) => {
-    const { firstName, lastName, email, password, institution, verificationToken } = req.body;
+    const { firstName, lastName, email, password, institution, category, verificationToken } = req.body;
 
     const hashedPassword = bcrypt.hashSync(password, 10); 
 
     const query = `
-        INSERT INTO users_medixr (firstName, lastName, email, password, institution, verificationToken, verified, expires)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO users_medixr (firstName, lastName, email, password, institution, category, verificationToken, verified, expires)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    const values = [firstName, lastName, email, hashedPassword, institution, verificationToken, false, Date.now() + 3600000]; 
+    const values = [firstName, lastName, email, hashedPassword, institution, category, verificationToken, false, Date.now() + 3600000]; 
 
     db.query(query, values, (err, result) => {
         if (err) {
@@ -101,97 +101,27 @@ app.post("/resetpassword", (req, res) => {
         }
 
         const hashedPassword = bcrypt.hashSync(newPassword, 10);
-        const resetVerificationToken = uuidv4();
-        const expirationTime = Date.now() + 3600000; // 1 hour from now
 
-        console.log('Searching for user with email:', email);
-        const findUserQuery = `
-            SELECT * FROM users_medixr WHERE email = ?
+        console.log('Updating password for user with email:', email);
+        const updateQuery = `
+            UPDATE users_medixr 
+            SET password = ?
+            WHERE email = ?
         `;
 
-        db.query(findUserQuery, [email], (findErr, results) => {
-            if (findErr) {
-                console.error('Error querying the database:', findErr);
-                return res.status(500).json({ error: 'Database error: ' + findErr.message });
+        db.query(updateQuery, [hashedPassword, email], (updateErr, result) => {
+            if (updateErr) {
+                console.error('Error updating user password:', updateErr);
+                return res.status(500).json({ error: 'Database error: ' + updateErr.message });
             }
 
-            if (results.length === 0) {
-                console.log('No user found with email:', email);
-                return res.status(400).json({ error: 'No user found with this email' });
-            }
-
-            console.log('User found, updating password');
-            const updateQuery = `
-                UPDATE users_medixr 
-                SET password = ?, resetVerificationToken = ?, expires = ? 
-                WHERE email = ?
-            `;
-
-            db.query(updateQuery, [hashedPassword, resetVerificationToken, expirationTime, email], (updateErr, result) => {
-                if (updateErr) {
-                    console.error('Error updating user password:', updateErr);
-                    return res.status(500).json({ error: 'Database error: ' + updateErr.message });
-                }
-
-                console.log('Password reset initiated successfully');
-                res.json({ 
-                    message: 'Password reset initiated. Check your email to verify', 
-                    resetVerificationToken,
-                    verificationLink: `http://localhost:3000/verifyreset/${resetVerificationToken}`
-                });
-            });
+            console.log('Password updated successfully');
+            res.json({ message: 'Password updated successfully' });
         });
     } catch (error) {
         console.error('Unexpected error in resetpassword route:', error);
         res.status(500).json({ error: 'Unexpected error: ' + error.message });
     }
-});
-
-
-app.get("/verifyreset/:token", (req, res) => {
-    const { token } = req.params;
-
-    console.log('Verifying reset token:', token);
-
-    const query = `
-        SELECT * FROM users_medixr 
-        WHERE resetVerificationToken = ? AND expires > ?
-    `;
-
-    const currentTime = Date.now();
-
-    db.query(query, [token, currentTime], (err, results) => {
-        if (err) {
-            console.error('Error querying the database:', err);
-            return res.status(500).json({ error: 'Database error: ' + err.message });
-        }
-
-        console.log('Query results:', results);
-
-        if (results.length === 0) {
-            console.log('No valid reset token found:', token);
-            return res.status(400).json({ error: 'Token is invalid or expired' });
-        }
-
-        const user = results[0];
-        console.log('User found:', user.email);
-
-        const updateQuery = `
-            UPDATE users_medixr 
-            SET resetVerificationToken = NULL, expires = NULL 
-            WHERE resetVerificationToken = ?
-        `;
-
-        db.query(updateQuery, [token], (updateErr) => {
-            if (updateErr) {
-                console.error('Error updating the user reset verification status:', updateErr);
-                return res.status(500).json({ error: 'Database error: ' + updateErr.message });
-            }
-
-            console.log('Password reset verification successful for user:', user.email);
-            res.json({ message: 'Password reset verification successful!' });
-        });
-    });
 });
 
 app.get("/verify/:token", (req, res) => {
@@ -228,8 +158,8 @@ app.get("/verify/:token", (req, res) => {
     });
 });
 
-app.get("/dashboard",  (req, res) => {
-    res.json({ message: 'Welcome to the dashboard', user: req.user });
+app.get("/dashboard", (req, res) => {
+    res.json({ message: 'Welcome to the dashboard!' });
 });
 
 app.use((err, req, res, next) => {

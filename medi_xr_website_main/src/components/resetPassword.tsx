@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState, FormEvent } from 'react';
-import emailjs from '@emailjs/browser';
 import { v4 as uuidv4 } from 'uuid';
 
 const ResetPassword = () => {
@@ -25,18 +24,7 @@ const ResetPassword = () => {
             return;
         }
 
-        const token = uuidv4();
-        const verificationLink = `${baseUrl}/verifyreset/${token}`;
-
-        const templateParams = {
-            from_name: 'Medi XR',
-            to_email: email,
-            link: verificationLink,
-        };
-
         try {
-            console.log('Sending email with template params:', templateParams);
-            await emailjs.send('service_h9j63h5', 'template_83247f8', templateParams, '9fnX19H-Z6IBp4IYD');
             const response = await fetch(`${baseUrl}/resetpassword`, {
                 method: 'POST',
                 headers: {
@@ -58,7 +46,7 @@ const ResetPassword = () => {
                 throw new Error(responseData.error || 'Failed to reset');
             }
 
-            alert('Reset successful. Check your email to verify');
+            alert('Reset successful. You can now login with your new password.');
             router.push('/login');
         } catch (error) {
             console.error('Reset failed:', error);
