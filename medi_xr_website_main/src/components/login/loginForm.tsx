@@ -45,10 +45,10 @@ const LoginForm = () => {
     return (
         <div className="h-full my-12">
             <div className="flex justify-center items-center h-full">
-                <div className="flex flex-col h-fit bg-white w-full max-w-md p-8 bg-opacity-50 rounded-lg shadow-lg">
+                <div className="flex flex-col h-[70%] bg-white w-full max-w-md p-8 bg-opacity-30 rounded-3xl shadow-xl">
                     <div>
                         <div className="flex flex-col items-center justify-center py-8">
-                            <h1 className="text-primary font-poppins font-bold text-3xl max-sm:text-xl">Login</h1>
+                            <h1 className="text-primary font-poppins font-bold text-white max-sm:text-xxl text-5xl">Login</h1>
                         </div>
                         <div>
                             <form onSubmit={handleLogin}>
@@ -60,7 +60,7 @@ const LoginForm = () => {
                                       Email
                                     </label>
                                     <input 
-                                        className="input_2"
+                                        className="text-[16px] px-4 bg-white bg-opacity-20 w-[100%] h-[55px] rounded mb-4"
                                         type="email"
                                         onChange={(e) => setEmail(e.target.value)}
                                         onClick={() => setErrorMessage('')}
@@ -72,7 +72,7 @@ const LoginForm = () => {
                                        Password
                                     </label>
                                     <input 
-                                        className="input_2"
+                                        className="text-[16px] px-4 bg-white bg-opacity-20 rounded w-[100%] h-[55px] outline-none mb-4"
                                         type="password" 
                                         onChange={(e) => setPassword(e.target.value)}
                                         onClick={() => setErrorMessage('')}

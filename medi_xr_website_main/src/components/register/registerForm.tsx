@@ -84,148 +84,148 @@ const RegisterForm = () => {
         }
 
         return (
-            <div className="h-[100%] my-12">
-              <div className="flex justify-center items-center h-[100%]">
-                <div className="flex flex-col h-fit bg-white w-[100%]">
+          <div className="h-[100%] my-12">
+            <div className="flex justify-center items-center h-[100%]">
+              <div className="flex flex-col h-[80%] mt-[-130px] bg-white w-[100%] bg-opacity-30 rounded-3xl shadow-xl mr-[100px]">
+                <div>
+                  <div className="flex flex-col items-center justify-center">
+                    <h1 className="text-primary font-poppins mb-4 mt-4 font-bold text-white text-2xl max-sm:text-[1.5rem]">Create Account</h1>
+                  </div>
                   <div>
-                    <div className="flex flex-col items-center justify-center py-8">
-                      <h1 className="text-primary font-poppins font-bold text-[3rem] max-sm:text-[1.5rem]">Create Account</h1>
-                    </div>
-                    <div>
-                      <form onSubmit={sendMail} encType="multipart/form-data">
-                        <div className="mx-8">
-                          <div className={`${errorMessage ? '' : 'hidden'} bg-red-100 rounded-[5px] h-fit py-4 px-4 mb-6 text-red-500`}>
-                            <span className="text-red-600 font-bold">Error: </span>
-                            {errorMessage}
-                          </div>
-                          <div className="flex gap-2">
-                            <div className="flex flex-col">
-                              <label htmlFor="firstName" className="text-sm font-semibold text-gray-600 mb-1">
-                                First Name
-                              </label>
-                              <input
-                                id="firstName"
-                                className="input_2"
-                                type="text"
-                                onChange={(e) => setFirstName(e.target.value)}
-                                onClick={resetError}
-                                value={firstName}
-                                name="first name"
-                                required
-                              />
-                            </div>
-                            <div className="flex flex-col">
-                              <label htmlFor="lastName" className="text-sm font-semibold text-gray-600 mb-1">
-                                Last Name
-                              </label>
-                              <input
-                                id="lastName"
-                                className="input_2"
-                                type="text"
-                                onChange={(e) => setLastName(e.target.value)}
-                                onClick={resetError}
-                                value={lastName}
-                                name="last name"
-                                required
-                              />
-                            </div>
-                          </div>
-                          <div className="flex flex-col">
-                            <label htmlFor="email" className="text-sm font-semibold text-gray-600 mb-1">
-                              Email
-                            </label>
-                            <input
-                              id="email"
-                              className="input_2"
-                              type="email"
-                              onChange={(e) => setEmail(e.target.value)}
-                              onClick={resetError}
-                              value={email}
-                              name="email"
-                              required
-                            />
-                          </div>
-                          <div className="flex gap-2">
-                            <div className="flex flex-col">
-                              <label htmlFor="password" className="text-sm font-semibold text-gray-600 mb-1">
-                                Password
-                              </label>
-                              <input
-                                id="password"
-                                className="input_2"
-                                type="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                onClick={resetError}
-                                value={password}
-                                name="password"
-                                required
-                              />
-                            </div>
-                            <div className="flex flex-col">
-                              <label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-600 mb-1">
-                                Confirm Password
-                              </label>
-                              <input
-                                id="confirmPassword"
-                                className="input_2"
-                                type="password"
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                onClick={resetError}
-                                value={confirmPassword}
-                                name="confirm password"
-                                required
-                              />
-                            </div>
-                          </div>
-                          <div className="flex flex-col">
-                            <label htmlFor="institution" className="text-sm font-semibold text-gray-600 mb-1">
-                              Institution
-                            </label>
-                            <input
-                              id="institution"
-                              className="input_2"
-                              type="text"
-                              onChange={(e) => setInstitution(e.target.value)}
-                              onClick={resetError}
-                              value={institution}
-                              name="institution"
-                              required
-                            />
-                          </div>
-                          <div className="flex flex-col">
-                            <label htmlFor="category" className="text-sm font-semibold text-gray-600 mb-1">
-                              Category
-                            </label>
-                            <select
-                              id="category"
-                              className="input_2"
-                              onChange={(e) => setCategory(e.target.value)}
-                              onClick={resetError}
-                              value={category}
-                              name="category"
-                              required
-                            >
-                              <option value="">Select category</option>
-                              <option value="student">Student</option>
-                              <option value="doctor">Doctor</option>
-                              <option value="sponsor">Sponsor</option>
-                              <option value="health care center">Health Care Center</option>
-                            </select>
-                          </div>
-                          <button
-                            type="submit"
-                            className="mt-8 bg-blue-gradient w-[100%] py-4 rounded-[5px] text-white text-[18px] font-semibold"
-                          >
-                            Sign up
-                          </button>
+                    <form onSubmit={sendMail} encType="multipart/form-data">
+                      <div className="mx-8">
+                        <div className={`${errorMessage ? '' : 'hidden'} bg-red-100 rounded-[5px] h-fit py-4 px-4 mb-6 text-red-500`}>
+                          <span className="text-red-600 font-bold">Error: </span>
+                          {errorMessage}
                         </div>
-                      </form>
-                    </div>
+                        <div className="flex gap-2">
+                          <div className="flex flex-col">
+                            <label htmlFor="firstName" className="text-white font-semibold text-gray-600 mb-1">
+                              First Name
+                            </label>
+                            <input
+                              id="firstName"
+                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              type="text"
+                              onChange={(e) => setFirstName(e.target.value)}
+                              onClick={resetError}
+                              value={firstName}
+                              name="first name"
+                              required
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="lastName" className="text-white font-semibold text-gray-600 mb-1">
+                              Last Name
+                            </label>
+                            <input
+                              id="lastName"
+                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              type="text"
+                              onChange={(e) => setLastName(e.target.value)}
+                              onClick={resetError}
+                              value={lastName}
+                              name="last name"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <label htmlFor="email" className="text-white font-semibold text-gray-600 mt-3 mb-3">
+                            Email
+                          </label>
+                          <input
+                            id="email"
+                            className="bg-white bg-opacity-20 rounded px-2 py-1"
+                            type="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            onClick={resetError}
+                            value={email}
+                            name="email"
+                            required
+                          />
+                        </div>
+                        <div className="flex gap-2">
+                          <div className="flex flex-col">
+                            <label htmlFor="password" className="text-white font-semibold text-gray-600 mb-3">
+                              Password
+                            </label>
+                            <input
+                              id="password"
+                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              type="password"
+                              onChange={(e) => setPassword(e.target.value)}
+                              onClick={resetError}
+                              value={password}
+                              name="password"
+                              required
+                            />
+                          </div>
+                          <div className="flex flex-col">
+                            <label htmlFor="confirmPassword" className="text-white font-semibold text-gray-600 mb-3">
+                              Confirm Password
+                            </label>
+                            <input
+                              id="confirmPassword"
+                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              type="password"
+                              onChange={(e) => setConfirmPassword(e.target.value)}
+                              onClick={resetError}
+                              value={confirmPassword}
+                              name="confirm password"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <div className="flex flex-col">
+                          <label htmlFor="institution" className="text-white font-semibold text-gray-600 mb-4">
+                            Institution
+                          </label>
+                          <input
+                            id="institution"
+                            className="bg-white bg-opacity-20 rounded px-2 py-1"
+                            type="text"
+                            onChange={(e) => setInstitution(e.target.value)}
+                            onClick={resetError}
+                            value={institution}
+                            name="institution"
+                            required
+                          />
+                        </div>
+                        <div className="flex flex-col">
+                          <label htmlFor="category" className="text-white font-semibold text-gray-600 mb-3">
+                            Category
+                          </label>
+                          <select
+                            id="category"
+                            className="bg-white bg-opacity-20 rounded px-2 py-1"
+                            onChange={(e) => setCategory(e.target.value)}
+                            onClick={resetError}
+                            value={category}
+                            name="category"
+                            required
+                          >
+                            <option value="">Select category</option>
+                            <option value="student">Student</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="sponsor">Sponsor</option>
+                            <option value="health care center">Health Care Center</option>
+                          </select>
+                        </div>
+                        <button
+                          type="submit"
+                          className="mt-8 bg-blue-gradient w-[100%] py-2 rounded-[5px] text-white text-[18px] font-semibold"
+                        >
+                          Sign up
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-          );
-        };
-        
-        export default RegisterForm;
+          </div>
+        );
+      };
+      
+      export default RegisterForm;

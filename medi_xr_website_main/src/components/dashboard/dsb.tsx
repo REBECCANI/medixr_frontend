@@ -1,4 +1,3 @@
-'use client';
 import React, { useEffect, useState } from 'react';
 import { Pie, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, ChartData } from 'chart.js';
@@ -133,12 +132,12 @@ const Dashboard = () => {
                         <p className="text-center text-blue-600">+18% +7.8k this week</p>
                     </div>
                 </div>
-                <div className="flex space-x-4">
+                <div className="flex space-x-4 flex-grow">
                     <div className="w-1/2 bg-white p-4 rounded shadow">
                         <h2 className="text-center">Annual Average Statistics</h2>
                         <Line data={lineData} />
                     </div>
-                    <div className="w-1/2 bg-white p-4 rounded shadow" style={{ overflow: 'hidden', height: '600px' }}>
+                    <div className="w-1/2 bg-white p-4 rounded shadow">
                         <h2 className="text-center">Stats by Category</h2>
                         {chartData && <Pie data={chartData} options={options} />}
                     </div>

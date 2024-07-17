@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState, FormEvent } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 const ResetPassword = () => {
     const [errorMessage, setErrorMessage] = useState("");
@@ -61,11 +60,11 @@ const ResetPassword = () => {
     return (
         <div className="h-screen flex flex-col justify-center items-center bg-bg-10 bg-cover bg-center">
             <div className='flex flex-col items-center justify-center py-8'>
-                <h3 className='text-primary font-poppins font-bold text-3xl max-sm:text-xl'>Reset your Account Password</h3>
+                <h3 className='mt-8 mb-4 text-primary font-poppins font-bold text-white max-sm:text-xxl text-2xl'>Reset your Account Password</h3>
             </div>
-            <div>
+            <div className="w-full max-w-md">
                 {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
-                <form onSubmit={handleResetPassword} className="bg-white bg-opacity-30 rounded-xl shadow-xl p-8 mx-8 flex flex-col items-center justify-center">
+                <form onSubmit={handleResetPassword} className="mt-4 bg-white bg-opacity-30 rounded-2xl shadow-xl p-8 mx-8 flex flex-col items-center justify-center h-[90%]">
                     <label htmlFor="email" className="text-primary font-poppins font-bold text-white mb-2">
                         Email
                     </label>
@@ -73,7 +72,7 @@ const ResetPassword = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="mb-4 p-2"
+                        className="mb-4 p-2 w-full"
                     />
                     <label htmlFor="password" className="text-primary font-poppins font-bold text-white mb-2">
                         Password
@@ -82,7 +81,7 @@ const ResetPassword = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="mb-4 p-2"
+                        className="mb-4 p-2 w-full"
                     />
                     <label htmlFor="confirmPassword" className="text-primary font-poppins font-bold text-white mb-2">
                         Confirm Password
@@ -91,7 +90,7 @@ const ResetPassword = () => {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="mb-4 p-2"
+                        className="mb-4 p-2 w-full"
                     />
                     <button type="submit" className="mt-8 bg-blue-gradient w-full py-4 rounded text-white text-lg font-semibold">
                         Reset

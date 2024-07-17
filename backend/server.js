@@ -162,6 +162,30 @@ app.get("/dashboard", (req, res) => {
     res.json({ message: 'Welcome to the dashboard!' });
 });
 
+app.get("/api/category-stats", (req, res) => {
+    const query = `
+        SELECT category, COUNT(*) as count
+        FROM users_medixr
+        WHERE verified = true
+        GROUP BY category
+    `;
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error fetching category stats:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+
+        const stats = results.reduce((acc, row) => {
+            acc[row.category] = row.count;
+            return acc;
+        }, {});
+
+        res.json(stats);
+    });
+});
+
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Something went wrong!' });
