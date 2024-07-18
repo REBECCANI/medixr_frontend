@@ -153,7 +153,7 @@ app.get("/verify/:token", (req, res) => {
                 return res.status(500).json({ error: 'Database error' });
             }
 
-            res.json({ message: 'Email verified successfully!' });
+            res.redirect('http://localhost:3000/confirm');
         });
     });
 });

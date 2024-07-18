@@ -1,3 +1,4 @@
+import { url } from 'inspector'
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -26,6 +27,7 @@ const config: Config = {
         'bg-6': 'url("/bg_2.png")',
         'bg-7': 'url("/bg_3.png")',
         'bg-10': 'url("/IMGL9434.jpg")',
+        'bg-9' : 'url("/main_trainig.jpg")',
         'balls': 'url("/balls.png")'
       },
       colors: {

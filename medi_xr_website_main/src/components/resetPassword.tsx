@@ -60,11 +60,11 @@ const ResetPassword = () => {
     return (
         <div className="h-screen flex flex-col justify-center items-center bg-bg-10 bg-cover bg-center">
             <div className='flex flex-col items-center justify-center py-8'>
-                <h3 className='mt-8 mb-4 text-primary font-poppins font-bold text-white max-sm:text-xxl text-2xl'>Reset your Account Password</h3>
+                <h3 className='mt-8 mb-1 text-primary font-poppins font-bold text-white max-sm:text-xxl text-2xl'>Reset your Account Password</h3>
             </div>
             <div className="w-full max-w-md">
                 {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
-                <form onSubmit={handleResetPassword} className="mt-4 bg-white bg-opacity-30 rounded-2xl shadow-xl p-8 mx-8 flex flex-col items-center justify-center h-[90%]">
+                <form onSubmit={handleResetPassword} className="mt-1 bg-white bg-opacity-30 rounded-2xl shadow-xl p-8 mx-8 flex flex-col items-center justify-center h-[80%]">
                     <label htmlFor="email" className="text-primary font-poppins font-bold text-white mb-2">
                         Email
                     </label>
@@ -72,7 +72,7 @@ const ResetPassword = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="mb-4 p-2 w-full"
+                        className="mb-4 p-2 w-full rounded-full bg-white bg-opacity-20"
                     />
                     <label htmlFor="password" className="text-primary font-poppins font-bold text-white mb-2">
                         Password
@@ -81,7 +81,7 @@ const ResetPassword = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="mb-4 p-2 w-full"
+                        className="mb-4 p-2 w-full rounded-full bg-white bg-opacity-20"
                     />
                     <label htmlFor="confirmPassword" className="text-primary font-poppins font-bold text-white mb-2">
                         Confirm Password
@@ -90,9 +90,9 @@ const ResetPassword = () => {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="mb-4 p-2 w-full"
+                        className="mb-4 p-2 w-full rounded-full bg-white bg-opacity-20"
                     />
-                    <button type="submit" className="mt-8 bg-blue-gradient w-full py-4 rounded text-white text-lg font-semibold">
+                    <button type="submit" className="mt-2 bg-gradient-to-r from-purple-500 to-blue-500 w-[50%] h-[10px] py-4 rounded-full text-white flex items-center justify-center text-lg font-semibold">
                         Reset
                     </button>
                 </form>

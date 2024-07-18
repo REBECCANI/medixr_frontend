@@ -105,7 +105,7 @@ const RegisterForm = () => {
                             </label>
                             <input
                               id="firstName"
-                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                               type="text"
                               onChange={(e) => setFirstName(e.target.value)}
                               onClick={resetError}
@@ -120,7 +120,7 @@ const RegisterForm = () => {
                             </label>
                             <input
                               id="lastName"
-                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                               type="text"
                               onChange={(e) => setLastName(e.target.value)}
                               onClick={resetError}
@@ -136,7 +136,7 @@ const RegisterForm = () => {
                           </label>
                           <input
                             id="email"
-                            className="bg-white bg-opacity-20 rounded px-2 py-1"
+                            className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                             type="email"
                             onChange={(e) => setEmail(e.target.value)}
                             onClick={resetError}
@@ -152,7 +152,7 @@ const RegisterForm = () => {
                             </label>
                             <input
                               id="password"
-                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                               type="password"
                               onChange={(e) => setPassword(e.target.value)}
                               onClick={resetError}
@@ -167,7 +167,7 @@ const RegisterForm = () => {
                             </label>
                             <input
                               id="confirmPassword"
-                              className="bg-white bg-opacity-20 rounded px-2 py-1"
+                              className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                               type="password"
                               onChange={(e) => setConfirmPassword(e.target.value)}
                               onClick={resetError}
@@ -183,7 +183,7 @@ const RegisterForm = () => {
                           </label>
                           <input
                             id="institution"
-                            className="bg-white bg-opacity-20 rounded px-2 py-1"
+                            className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                             type="text"
                             onChange={(e) => setInstitution(e.target.value)}
                             onClick={resetError}
@@ -198,7 +198,7 @@ const RegisterForm = () => {
                           </label>
                           <select
                             id="category"
-                            className="bg-white bg-opacity-20 rounded px-2 py-1"
+                            className="bg-white bg-opacity-20 rounded-full px-2 py-1"
                             onChange={(e) => setCategory(e.target.value)}
                             onClick={resetError}
                             value={category}
@@ -214,7 +214,7 @@ const RegisterForm = () => {
                         </div>
                         <button
                           type="submit"
-                          className="mt-8 bg-blue-gradient w-[100%] py-2 rounded-[5px] text-white text-[18px] font-semibold"
+                          className="mt-8 bg-gradient-to-r from-purple-500 to-blue-500 w-[40%] flex mx-auto py-2 rounded-full items-center justify-center text-white text-[18px] font-semibold"
                         >
                           Sign up
                         </button>
